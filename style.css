@@ -27,13 +27,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 /* HEADER + NAV */
 header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:34px;height:76px}
-.brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.nav{display:flex;align-items:center;gap:26px;height:76px}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto;flex-shrink:0}
 .brand .mark{height:32px;width:auto;flex:none}
-.brand b{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1}
+.brand b{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1;white-space:nowrap}
 .brand small{display:block;font:600 9px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.menu{display:flex;align-items:center;gap:26px}
-.menu>a,.subtoggle{font:500 15px/1 var(--sans);color:#3c4047;cursor:pointer}
+.menu{display:flex;align-items:center;gap:22px}
+.menu>a,.subtoggle{font:500 15px/1 var(--sans);color:#3c4047;cursor:pointer;white-space:nowrap}
 .menu>a:hover,.subtoggle:hover{color:var(--red-ink)}
 .menu>a.on,.subtoggle.on{color:var(--ink);font-weight:600}
 .has-sub{position:relative}
@@ -200,30 +200,38 @@ footer ul a,footer ul li{font-size:14.5px;color:#43474e}footer ul a:hover{color:
 .fbot span{font-size:13px;color:var(--muted)}
 
 /* RESPONSIVE */
-@media(max-width:920px){
+/* Tablet and below: nav collapses to a hamburger (full nav needs >1024 to fit) */
+@media(max-width:1024px){
   .menu,.ncta .ph,.ncta>.btn{display:none}
   .burger{display:flex;margin-left:auto}
   .menu.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:6px var(--pad) 20px}
-  .menu.open>a,.menu.open .subtoggle{padding:14px 0;border-bottom:1px solid var(--line)}
+  .menu.open>a,.menu.open .subtoggle{padding:14px 0;border-bottom:1px solid var(--line);white-space:normal}
   .menu.open .has-sub{display:flex;flex-direction:column}
   .menu.open .sub{position:static;opacity:1;visibility:visible;transform:none;border:0;box-shadow:none;padding:0 0 8px 14px;min-width:0;display:none}
   .menu.open .has-sub.open .sub{display:block}
-  .hero .wrap{grid-template-columns:1fr;gap:36px}.hero-fig{order:-1}
-  .cards{grid-template-columns:1fr}
-  .serve-grid{grid-template-columns:1fr}
-  .why .wrap{grid-template-columns:1fr;gap:34px}
-  .ctaband .wrap{flex-direction:column;align-items:flex-start}
+  /* tablet keeps the card/serve/why grids; only the widest 2-col bands ease */
   .detail .wrap{grid-template-columns:1fr;gap:40px}
   .aside{position:static}
-  .story .wrap{grid-template-columns:1fr;gap:36px}.story .seal-wrap{order:-1}
-  .values-grid{grid-template-columns:1fr 1fr}
-  .contact .wrap{grid-template-columns:1fr;gap:34px}
+  .contact .wrap{grid-template-columns:1fr;gap:36px}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
   .fmain{grid-template-columns:1fr 1fr;gap:30px}
 }
-@media(max-width:520px){
-  .frow{grid-template-columns:1fr}
+/* Phones: single column */
+@media(max-width:720px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px}.hero-fig{order:-1}
+  .cards{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .why .wrap{grid-template-columns:1fr;gap:30px}
+  .story .wrap{grid-template-columns:1fr;gap:30px}.story .seal-wrap{order:-1}
+  .ctaband .wrap{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){
   .values-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
   .fmain{grid-template-columns:1fr}
+  section.s{padding-block:48px}
+  .s-head{margin-bottom:30px}
+  .hero .wrap{padding-block:38px}
 }
 
 section[id]{scroll-margin-top:92px}
