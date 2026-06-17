@@ -232,6 +232,10 @@ footer ul a,footer ul li{font-size:14.5px;color:#43474e}footer ul a:hover{color:
   section.s{padding-block:48px}
   .s-head{margin-bottom:30px}
   .hero .wrap{padding-block:38px}
+  /* credentials: stack into a clean left-aligned list instead of uneven wrapping */
+  .trust .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+  .trust .lab{margin:0 0 2px}
+  .trust .it{font-size:15px}
 }
 
 section[id]{scroll-margin-top:92px}
